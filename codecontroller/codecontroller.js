@@ -207,7 +207,7 @@ let delbyquery = async (req, res) => {
         ]
         let del = await blogSchema.find(query)
         if (del.length == 0) {
-            return res.status(404).send({ status: false, msg: "No such blog present or Not authorized to delete blog" })
+            return res.status(404).send({ status: false, msg: "No such blog present"})
         }
         const result = await blogSchema.updateMany(
             query, { $set: { isDeleted: true, DeletedAt: new Date().toLocaleString() } })
